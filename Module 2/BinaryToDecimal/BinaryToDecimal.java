@@ -21,5 +21,13 @@ public class BinaryToDecimal {
      */
     public static int binaryToDecimal(String s) {
     //    return Integer.parseInt(s,2); 
+        int decimal = 0,base = 1;
+        int len = s.length();
+        for (int i = len - 1; i >= 0; i--) { 
+            if (s.charAt(i) == '1') 
+                decimal += base; 
+            base = base * 2; 
+        }
+        return decimal;
     }
 }
