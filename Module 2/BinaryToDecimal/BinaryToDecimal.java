@@ -20,6 +20,6 @@ public class BinaryToDecimal {
      * @return the decimal number n of the binary string.
      */
     public static int binaryToDecimal(String s) {
-        
+    //    return Integer.parseInt(s,2); 
     }
 }
