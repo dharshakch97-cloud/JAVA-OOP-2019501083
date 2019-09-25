@@ -23,7 +23,9 @@ public class Squares {
      */
     public static int[] squared(int[] nums) {
         //  Your code goes here.
-        
-        return null;
+        for(int i=0;i<nums.length;i++){
+            nums[i] = (int)Math.pow(nums[i],2);
+        }
+        return nums;
     }
 }
