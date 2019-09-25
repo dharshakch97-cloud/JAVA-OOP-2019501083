@@ -22,8 +22,18 @@ public class MiniMaxSum {
      */
     public static int min(int[] arr) {
         //  Your code goes here...
-        
-        return -1;
+        if(arr.length == 0){
+            return -1;
+        }
+        else{
+            temp = arr[0];
+            for(int i=1;i<arr.length;i++){
+                if(a[i]>temp){
+                    temp=a[i];
+                }
+            }
+            return temp;
+        }
     }
 
     /**
@@ -34,8 +44,18 @@ public class MiniMaxSum {
      */
     public static int max(int[] arr) {
         //  Your code goes here...
-        
-        return -1;
+        if(arr.length == 0){
+            return -1;
+        }
+        else{
+            temp = arr[0];
+            for(int i=1;i<arr.length;i++){
+                if(a[i]<temp){
+                    temp=a[i];
+                }
+            }
+            return temp;
+        }
     }
 
     /**
