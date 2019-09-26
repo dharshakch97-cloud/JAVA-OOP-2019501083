@@ -37,8 +37,13 @@ public class Stats {
      */
     public static double mean(int[] arr) {
         //  Your code goes here....
-
-        return 0.0;
+        double mean,sum = 0;
+        int n = arr.length;
+        for(int i=0;i<arr.length;i++){
+            sum += arr[i];
+        }
+        mean = sum/n;
+        return mean;
     }
 
     /**
@@ -52,8 +57,16 @@ public class Stats {
      */
     public static double median(int[] arr) {
         //  Your code goes here...
-
-        return 0.0;
+        Arrays.sort(arr);
+        int n = arr.length;
+        double median;
+        if(n % 2 == 0){
+            median = (arr[n/2] + arr[n/2 + 1])/2;
+        }
+        else{
+            median = arr[n/2];
+        }
+        return median;
     }
 
     /**
@@ -63,11 +76,10 @@ public class Stats {
      * @param arr, the input array.
      * @return the mode of the array, 0 otherwise if there is no mode.
      */
-    public static int mode(int[] arr) {
-        //  Your code goes here....
-
-        return 0;
-    }
+    // public static int mode(int[] arr) {
+    //     //  Your code goes here....
+        
+    // }
 
     /**
      * This method returns the variance of the input array.
@@ -78,8 +90,13 @@ public class Stats {
      */
     public static double variance(int[] arr) {
         //  Your code goes here....
-
-        return 0.0;
+        double mean = mean(arr);
+        int n = arr.length;
+        for(int i=0;i<n;i++){
+            variance += Math.pow((arr[i]-mean),2);
+        }
+        variance = (double)variance/n;
+        return variance;
     }
 
     /**
@@ -90,7 +107,6 @@ public class Stats {
      */
     public static double standardDeviation(int[] arr) {
         //  Your code goes here....
-
-        return 0.0;
+        return Math.sqrt(variance(arr));
     }
 }
