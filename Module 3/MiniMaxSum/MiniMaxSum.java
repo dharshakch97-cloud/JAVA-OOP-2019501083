@@ -26,10 +26,10 @@ public class MiniMaxSum {
             return -1;
         }
         else{
-            temp = arr[0];
+            int temp = arr[0];
             for(int i=1;i<arr.length;i++){
-                if(a[i]>temp){
-                    temp=a[i];
+                if(arr[i]>temp){
+                    temp=arr[i];
                 }
             }
             return temp;
@@ -48,10 +48,10 @@ public class MiniMaxSum {
             return -1;
         }
         else{
-            temp = arr[0];
+            int temp = arr[0];
             for(int i=1;i<arr.length;i++){
-                if(a[i]<temp){
-                    temp=a[i];
+                if(arr[i]<temp){
+                    temp=arr[i];
                 }
             }
             return temp;
@@ -66,8 +66,11 @@ public class MiniMaxSum {
      */
     public static int sum(int[] arr) {
         //  Your code goes here...
-        
-        return -1;
+        int sum=0;
+        for(int i=0;i<arr.length;i++){
+            sum += arr[i];
+        }
+        return sum;
     }
     
     /**
@@ -80,7 +83,12 @@ public class MiniMaxSum {
      */
     public static String miniMaxSum(int[] arr) {
         //  Your code goes here...
-        
-        return "";
+        int min = min(arr);
+        int max = max(arr);
+        int total = sum(arr);
+        int minSum = total - min;
+        int maxSum = total - max;
+        String fnl = maxSum + "," + minSum;
+        return fnl;
     }
 }
