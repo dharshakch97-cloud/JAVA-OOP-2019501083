@@ -39,7 +39,10 @@ public class Stats {
         //  Your code goes here....
         double mean,sum = 0;
         int n = arr.length;
-        for(int i=0;i<arr.length;i++){
+        if (arr.length == 0) {
+            return 0.0;
+        }
+        for(int i = 0;i < arr.length;i++){
             sum += arr[i];
         }
         mean = sum/n;
@@ -60,11 +63,11 @@ public class Stats {
         Arrays.sort(arr);
         int n = arr.length;
         double median;
-        if(n % 2 == 0){
-            median = (arr[n/2] + arr[n/2 + 1])/2;
+        if(n % 2 == 1){
+            median = arr[n/2];
         }
         else{
-            median = arr[n/2];
+            median = (arr[n/2] + arr[n/2 - 1])/2.0;
         }
         return median;
     }
@@ -76,10 +79,28 @@ public class Stats {
      * @param arr, the input array.
      * @return the mode of the array, 0 otherwise if there is no mode.
      */
-    // public static int mode(int[] arr) {
-    //     //  Your code goes here....
-        
-    // }
+    public static int mode(int[] arr) {
+        //  Your code goes here....
+        int maxV = arr[0];
+        int maxC = 0;
+        for (int i = 0;i < arr.length; i++) {
+            int count = 0;
+            for ( int j = 0;j < arr.length; j++) {
+                if (arr[j] == arr[i]) {
+                    count += 1;
+                }
+                if (count > maxC) {
+                    maxC = count;
+                    maxV = arr[i];
+                }
+            }
+        }
+        if (maxC == 1) {
+            return 0;
+        } else {
+            return maxV;
+        }
+    }
 
     /**
      * This method returns the variance of the input array.
@@ -89,14 +110,14 @@ public class Stats {
      * @return the variance of the array.
      */
     public static double variance(int[] arr) {
-        //  Your code goes here....
+        //  Your code goes here...
+        double variance = 0.0;
         double mean = mean(arr);
         int n = arr.length;
         for(int i=0;i<n;i++){
             variance += Math.pow((arr[i]-mean),2);
         }
-        variance = (double)variance/n;
-        return variance;
+        return variance/n;
     }
 
     /**
