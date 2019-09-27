@@ -1,66 +1,55 @@
 class CardCatalog {
-
-    private Card[] myCards;
-    private int cardCount;
+    Card[]cardArray;
+    int index = 0;
 
     CardCatalog() {
-        final int hundr = [100];
-        this.myCards = new Card[five];
-        this.cardCount = 0;
+        cardArray = new Card[10];
     }
 
-    public void AddCard(Card[] card) {
-        myCards[cardCount] = card;
-        cardCount++;
+    public void AddCard(Card obj) {
+        cardArray[index] = obj;
+        index += 1;
     }
-    public Card searchATitle(String title) {
-        for (int i = 0; i < cardCount; i++) {
-            if (myCards[i].getTitle() == title) {
-                return myCards[i];
+    public Card GetATitle(String s1) {
+        for(int i = 0; i<cardArray.length; i++) {
+            if(cardArray[i].title.equals(s1)) {
+                return cardArray[i];
             }
         }
         return null;
     }
-    public Card searchAnAuthor(String author) {
-        cArr[] cardArray;
-        count = 0;
-        for (int i = 0; i < cardCount; i++) {
-            if (myCards[i].getAuthor() == author) {
-                // System.out.println(myCard[i]);
-                cArr[count] = myCards[i];
-                count++;
+    public Card[] GetAuthor(String s2) {
+        Card[] arr = new Card[index];
+        int count = 0;
+        for(int i = 0; i<cardArray.length; i++) {
+            if(cardArray[i].author.equals(s2)) {
+                arr[count] = cardArray[i];
+                count += 1;
             }
         }
-        return cArr;
+        return null;
     }
-    public Card searchSubject(String subject) {
-        cArr[] cardArray;
-        count = 0;
-        for (int i = 0; i < cardCount; i++) {
-            if (myCards[i].getSubject() == subject) {
-                // System.out.println(myCard[i]);
-                cArr[count] = myCards[i];
-                count++;
+            
+    public Card get_Subject(String s3) {
+        for(int i = 0; i<cardArray.length; i++) {
+            if(cardArray[i].subject.equals(s3)) {
+                cardArray[i] = null;
             }
         }
-        return cArr;
+        return null;
     }
-    public boolean removeCard(String searchTitle) {
-        //  Your code goes here....
-        for (int i = 0; i < cardCount; i++) {
-
-            if (myCards[i].getTitle() == searchTitle) {
-                
-                // i is the match index
-                for (int j = i + 1; j < cardCount; j++) {
-                    myCards[i] = myCards[j];
-                    i++;
-                }
-                myCards[cardCount] = null;
-                cardCount--;
-                return true;
+    public void remove_All(String s4) {
+        for(int i = 0; i<cardArray.length; i++) {
+            if(cardArray[i].title == s4) {
+                cardArray[i] = null;
+            }
+        } 
+    }
+    public void print_Catalog() {
+        for(int i = 0; i<cardArray.length; i++) {
+            if(this.cardArray[i] != null) {
+                System.out.println(cardArray[i]);
             }
         }
-        return false;
     }
 }
