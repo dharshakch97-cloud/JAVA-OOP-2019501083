@@ -24,23 +24,26 @@ class CardCatalog {
         for(int i = 0; i<cardArray.length; i++) {
             if(cardArray[i].author.equals(s2)) {
                 arr[count] = cardArray[i];
-                count += 1;
+                count++;
             }
         }
-        return null;
+        return arr;
     }
             
-    public Card get_Subject(String s3) {
+    public Card[] getSubject(String s3) {
+        Card[] arr = new Card[index];
+        int count = 0;
         for(int i = 0; i<cardArray.length; i++) {
             if(cardArray[i].subject.equals(s3)) {
-                cardArray[i] = null;
+                arr[count] = cardArray[i];
+                count++;
             }
         }
-        return null;
+        return arr;
     }
-    public void remove_All(String s4) {
+    public void delete(String s4) {
         for(int i = 0; i<cardArray.length; i++) {
-            if(cardArray[i].title == s4) {
+            if(cardArray[i].title.equals(s4)) {
                 cardArray[i] = null;
             }
         } 

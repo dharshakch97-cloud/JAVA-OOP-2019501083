@@ -7,6 +7,11 @@ class Menu {
         cardcatalog.AddCard(card1);
         cardcatalog.AddCard(card2);
         cardcatalog.AddCard(card3);
+        // cardcatalog.print_Catalog();
+        // Card get_title = cardcatalog.GetATitle("harry");
+        // System.out.println(get_title);
+        // cardcatalog.delete("harry");
+        Card[] get_subject = cardcatalog.getSubject("action");
         cardcatalog.print_Catalog();
     }
 }
