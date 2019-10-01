@@ -7,7 +7,7 @@
  * @author Siva Sankar
  */
 
-public class Clock {
+final class Clock {
     // Creates a clock whose initial time is h hrs and m min.
     /**
      * The parameterised constructor will instatiates the object with the values of
@@ -15,38 +15,83 @@ public class Clock {
      * @param h
      * @param m
      */
-    public Clock(int h, int m) {
+    int hours,minutes;
 
+    public Clock(int h, int m) {
+        this.hours = h;
+        this.minutes = m;
     }
 
     // Creates a clock whose initial time is specified as a string, using the format HH:MM.
 
     public Clock(String s) {
-
+        this.hours = Integer.parseInt(s.substring(0,2));
+        this.minutes = Integer.parseInt(s.substring(3,5));
     }
 
     // Returns a string representation of this clock, using the format HH:MM.
     public String toString() {
-
+        String h = this.hours + "";
+        String m = this.minutes + "";
+        if (this.hours < 10) {
+            h = "0" + h;
+        }
+        if (this.minutes < 10) {
+            m = "0" + m;
+        }
+        return h + ":" + m;
     }
 
     // Is the time on this clock earlier than the time on that one?
     public boolean isEarlierThan(Clock that) {
-        
+        if (this.hours < that.hours) {
+            return true;
+        } else if (this.hours == that.hours && this.minutes < that.minutes) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    private void check() {
+    // private void check() {
         
-    }
+    // }
 
     // Adds 1 minute to the time on this clock.
     public void tic() {
-        
+        this.minutes++;
+        if (this.minutes == 60) {
+            this.minutes = 0;
+            this.hours++;
+        }
+        if (this.hours == 24) {
+            this.hours = 0;
+        }
     }
 
     // Adds Δ min to the time on this clock.
     public void toc(int delta) {
-        
+        if(delta > 0) {
+
+            int min2Add = delta % 60;
+            int hr2Add = (int)Math.floor(delta / 60);
+            
+            int minutesNow = this.minutes + min2Add;
+            int currentHours = this.hours + hr2Add;
+
+            if (minutesNow >= 60) {
+                this.minutes = minutesNow - 60;
+                currentHours++;
+            } else {
+                this.minutes = minutesNow;
+            }
+
+            if (currentHours >= 24) {
+                this.hours = currentHours % 24;
+            } else {
+                this.hours = currentHours;
+            }
+        }
     }
 
     // Test client (see below).

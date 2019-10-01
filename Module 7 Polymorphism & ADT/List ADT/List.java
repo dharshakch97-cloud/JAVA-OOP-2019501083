@@ -37,7 +37,8 @@ public class List {
      * This is a hard concept to understand. Discuss with your mentor.
      *
     */
-    
+    private int[] list;
+
     // declare a private int[]
     // don't create the array yet using new
     // that's the job of the List constructor
@@ -63,7 +64,7 @@ public class List {
      * to be accessed by the methods that are outside of the List class.
      * 
      */
-
+    private int size;
     // declare a private int size
     // again, don't initialize it here
     // variable initialization should be done in the constructor
@@ -72,13 +73,16 @@ public class List {
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
      */
-    public List() {
+    List() {
 
         // what are the two variables to be initialized here?
         // think about the private variables described above.
         // What should be the default values?
         // In the case of the list, it should be empty but
         // it should be initialized with an array size like 10
+
+        this.list = new int[10];
+        this.size = 0;
 
         // Think about the initial value for size.
         // How many items do we have in the list when you create it?
@@ -102,18 +106,21 @@ public class List {
     public void add(int item) {
         //Inserts the specified element at the end of the list.
         //  Your code goes here.....
+        list[size] = item;
+        size++;
     }
 
     /*
      * The size method returns the value of the size.
      * The purpose of the method is to announce the size of the list
-     * to the objects outside the list
+     * to the objects outside the list, because its private
      * 
      * The method returns an int. Empty list should return 0.
      */
     public int size() {
         // replace the code below to implement the size method
         //  Your code goes here.....
+        return this.size;
     }
 
     /*
@@ -127,19 +134,29 @@ public class List {
      * to the right side of the removed item should be
      * moved to the left by one position.
      * Here is an example:
-     * array = [1,2,3,0,0,0,0,0,0,0]
+     * array = [1,2,3,4,5,6,0,0,0,0]
      * remove(1) would remove the item 2 which is at index position 1.
      * But how do you remove the item from an array?
      * Well, the way to remove it is to move all
      * the items, that are to the right of the removed item, to the left
      * So, the new array looks like this.
-     * array = [1,3,0,0,0,0,0,0,0,0]
+     * array = [1,3,4,5,6,0,0,0,0,0]
      * The method returns void (nothing)
      */
-    public void remove(int index) {
+    public void remove(final int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         // Your code goes here.....
+
+        if (index < size) {
+            int i = index;
+            for (int j = i + 1; j < size; j++) {
+                list[i] = list[j];
+                i++;
+            }
+            list[size] = 0;
+            size--;
+        }
     }
 
     /*
@@ -155,7 +172,11 @@ public class List {
      */
     public int get(int index) {
         // Replace the code below to write the code for get
-        // Your code goes here.....
+        // Your code goes here.....// l[9]
+        if(index < size) {
+            return list[index];
+        }
+        return -1;
     }
 
     /*
@@ -171,7 +192,7 @@ public class List {
      * So, implement the toString method to display the items
      * in the list in the square brackets notation.
      * i.e., if the list has numbers 1, 2, 3
-     * return the string [1,2,3]
+     * return the string [1,2,3]  --  [1,2,3,] "[1,2,3" + "]"
      * Caution: The array may be having other elements
      * Example: [1,2,3,0,0,0,0,0,0,0]
      * toString should only return the items in the list and
@@ -179,7 +200,14 @@ public class List {
      *
      */
     public String toString() {
-        // Your code goes here.....
+        // Your code 'goes here.....
+        String out = "[";
+        for (int i = 0 ; i < size - 1; i++) {
+            out += list[i] + ",";
+        }
+        out += list[size-1] + "]";
+
+        return out;
     } 
     
     /*
@@ -190,6 +218,12 @@ public class List {
      */
     public boolean contains(int item) {
         // Your code goes here.....
+        for (int i = 0 ; i < size; i++) {
+            if (list[i] == item) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*
@@ -199,6 +233,12 @@ public class List {
      */
     public int indexOf(int item) {
         // Your code goes here.....
+        for (int i = 0 ; i < size; i++) {
+            if (list[i] == item) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**

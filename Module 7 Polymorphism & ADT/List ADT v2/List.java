@@ -56,6 +56,7 @@ public class List {
     // again, don't initialize it here
     // variable initialization should be done in the constructor
     private int size;
+    private int capacity;
 
     /*
      * The purpose of the constructor is to initialize the
@@ -72,7 +73,8 @@ public class List {
         // In the case of the list, it should be empty but
         // it should be initialized with an array size like 10
         
-
+        this.list = new int[10];
+        this.size = 0;
         // Think about the initial value for size.
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
@@ -94,9 +96,10 @@ public class List {
      * constructor.
      * 
      */
-    public List(int capacity) {
+    public List(int cap) {
         size = 0;
-        list = new int[capacity];
+        list = new int[cap];
+        this.capacity = cap;
     }
     
     /*
@@ -112,7 +115,12 @@ public class List {
      */
     public void add(int item) {
         //Inserts the specified element at the end of the list.
-        
+        list[size] = item;
+        size++;
+
+        if (size == this.capacity) {
+            resize();
+        }
     }
 
     /*
@@ -147,7 +155,9 @@ public class List {
      */
 
     // todo create resize method
-
+    public void resize() {
+        this.list = java.util.Arrays.copyOf(list, this.capacity * 2);
+    }
 
     /*
      * The size method returns the value of the size.
@@ -157,7 +167,7 @@ public class List {
      * The method returns an int. Empty list should return 0.
      */
     public int size() {
-        
+        return this.size;
     }
 
     /*
@@ -181,10 +191,20 @@ public class List {
      * The method returns void (nothing)
      */
 
-    public void remove(int index) {
+    public void remove(final int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
-        
+        // Your code goes here.....
+
+        if (index < size) {
+            int i = index;
+            for (int j = i + 1; j < size; j++) {
+                list[i] = list[j];
+                i++;
+            }
+            list[size] = 0;
+            size--;
+        }
     }
 
     /*
@@ -199,7 +219,12 @@ public class List {
      * number of items in the list? Would size variable be useful?
      */
     public int get(int index) {
-
+        // Replace the code below to write the code for get
+        // Your code goes here.....// l[9]
+        if(index < size) {
+            return list[index];
+        }
+        return -1;
     }
 
     /*
@@ -241,7 +266,13 @@ public class List {
      * the item exists and otherwise false
      */
     public boolean contains(int item) {
-        
+        // Your code goes here.....
+        for (int i = 0 ; i < size; i++) {
+            if (list[i] == item) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*
@@ -250,7 +281,13 @@ public class List {
      * or -1 if this list does not contain the element.
      */
     public int indexOf(int item) {
-        
+        // Your code goes here.....
+        for (int i = 0 ; i < size; i++) {
+            if (list[i] == item) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 	public static void main(String[] args) {

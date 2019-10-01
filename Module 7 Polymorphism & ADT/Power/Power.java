@@ -13,8 +13,7 @@
      * @return a^b which is a long value.
      */
      public static long pow(int a, int b) {
-         long c = Math.pow(a,b);
-         return c;
+         return (long)Math.pow(a,b);
      }
 
      /**
@@ -24,9 +23,8 @@
      * @param  b, the exponential
      * @return a^b which is a long value.
      */
-     public static double pow(float a, int b) {
-      long c = Math.pow(a,b);  
-      return c;
+     public static double pow(float a, int b) {  
+        return (double)Math.pow(a,b);
         
      }
  }
