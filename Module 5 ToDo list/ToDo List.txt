@@ -35,7 +35,7 @@ task description, due date, status of each task.
 	
 2. You can remove task from your ToDo List
 
-	3. You can update the status of the task. (Mark the task as complete, in progress or incomplete)
+3. You can update the status of the task. (Mark the task as complete, in progress or incomplete)
 	
 4. You can display all the pending / incomplete tasks from your ToDo List.
 	

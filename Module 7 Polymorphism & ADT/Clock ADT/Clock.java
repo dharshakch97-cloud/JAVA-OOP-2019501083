@@ -71,26 +71,29 @@ final class Clock {
 
     // Adds Δ min to the time on this clock.
     public void toc(int delta) {
-        if(delta > 0) {
+        // if(delta > 0) {
 
-            int min2Add = delta % 60;
-            int hr2Add = (int)Math.floor(delta / 60);
+        //     int min2Add = delta % 60;
+        //     int hr2Add = (int)Math.floor(delta / 60);
             
-            int minutesNow = this.minutes + min2Add;
-            int currentHours = this.hours + hr2Add;
+        //     int minutesNow = this.minutes + min2Add;
+        //     int currentHours = this.hours + hr2Add;
 
-            if (minutesNow >= 60) {
-                this.minutes = minutesNow - 60;
-                currentHours++;
-            } else {
-                this.minutes = minutesNow;
-            }
+        //     if (minutesNow >= 60) {
+        //         this.minutes = minutesNow - 60;
+        //         currentHours++;
+        //     } else {
+        //         this.minutes = minutesNow;
+        //     }
 
-            if (currentHours >= 24) {
-                this.hours = currentHours % 24;
-            } else {
-                this.hours = currentHours;
-            }
+        //     if (currentHours >= 24) {
+        //         this.hours = currentHours % 24;
+        //     } else {
+        //         this.hours = currentHours;
+        //     }
+        // }
+        for (int i = 0; i < delta; i++) {
+            this.tic();
         }
     }
 

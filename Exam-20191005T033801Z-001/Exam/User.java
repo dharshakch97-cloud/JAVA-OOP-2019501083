@@ -1,37 +1,63 @@
 import java.util.*;
 
-public class User {
-    private String user;
-    private int noOfConnections;
-    private User[] connections;
+public final class User {
+    String userName;
+    User[] connections;
+    int noOfConnections;
+    int connectionsCapacity;
 
-    User(String u, int nc, User[] c) {
-        this.user = u;
-        this.noOfConnections = nc;
-        this.connections = c;
+    User(final String name) {
+        userName = name;
+        connections = new User[20];
+        noOfConnections = 0;
+        connectionsCapacity = 20;
     }
 
-    public getUser() {
-        return this.user;
+    User(final String name, final String n) {
+        userName = name;
+        connections = new User[20];
+        noOfConnections = 0;
+        connectionsCapacity = 20;
+    }
+    
+    User(final String name,final User[] userFriends, final int n) {
+        userName = name;
+        connections = userFriends;
+        noOfConnections = n;
+        connectionsCapacity = 20;
     }
 
-    public getNoOfConnections() {
-        return this.noOfConnections;
+    public String getUserName() {
+        return this.userName;
     }
 
-    public getConnections() {
-        return this.connections;
+    public void addFriend(final User user) {
+        connections[noOfConnections] = user;
+        noOfConnections++;
+
+        if (noOfConnections == connectionsCapacity){
+            connections = java.util.Arrays.copyOf(connections, connectionsCapacity * 2);
+            connectionsCapacity = connectionsCapacity * 2;
+        }
     }
 
-    public setUser(String user_name) {
-        this.user = user_name;
+    /*
+     *to string
+     */
+    public String toString() {
+        String out =  userName + " : ";
+
+        if (noOfConnections > 0) {
+            out += "[";
+
+            for (int i = 0; i < noOfConnections - 1; i++) {
+                out += connections[i].userName + ", ";
+            }
+            out += connections[noOfConnections - 1].userName + "]";
+        }
+
+        return out;
     }
 
-    public setNoOfConnections(int nc) {
-        this.noOfConnections = nc;
-    }
 
-    public setConnections(User[] connections_a) {
-        this.connections = connections_a;
-    }
 }

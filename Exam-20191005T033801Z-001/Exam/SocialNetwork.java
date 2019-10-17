@@ -18,6 +18,7 @@ public class SocialNetwork {
      * The size indicates the numebr of users in the network
      */
     int size;
+    int capacity;
 
     /**
      * Initializes the default values of the social network.
@@ -25,8 +26,9 @@ public class SocialNetwork {
     public SocialNetwork() {
         // TODO
         // Your code goes here
-        this.users = new User[10];
+        this.users = new User[20];
         this.size = 0;
+        this.capacity = 20;
     }
 
     /**
@@ -38,13 +40,48 @@ public class SocialNetwork {
     public void createDataStructure(String str) {
         // TODO
         // Your code goes here
-        String[] tokens = str.split(“;”);  
-        return 
+        if (str != "") {
+            String[] tokens = str.split(";");
+            for (String eachtoken : tokens) {
+                String[] users = eachtoken.split(" is connected to ");
+                String userName = users[0];
+                String[] userFriends = users[1].split(",");
+                User[] userFriendObjects = new User[20];
+                for(int i = 0; i < userFriends.length; i++) {
+                    userFriendObjects[i] = new User(userFriends[i]);
+                }
+                User gotUser = getUser(userName);
+                if (gotUser == null) {
+                    User userObj = new User(userName, userFriendObjects, userFriends.length);
+                    addUser(userObj);
+                } else {
+                    for (User var : userFriendObjects) {
+                        if (var != null) {
+                            gotUser.addFriend(var);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                for (User var : userFriendObjects) {
+                    if (var == null) {
+                        break;
+                    } else if (getUser(var.getUserName()) == null) {
+                        addUser(var);
+                    } else {
+
+                    }
+                }
+            }
+        }
     }
 
     private boolean searchUser(User user) {
+        if(user == null) {
+            return false;
+        }
         for (int i = 0; i < size; i++) {
-            if (user.equals(users[i])) {
+            if (user.equals(users[i]) || user.getUserName().equals(users[i].getUserName())) {
                 return true;
             }
         }
@@ -77,8 +114,15 @@ public class SocialNetwork {
     public void addUser(User userA) {
         // TODO
         // Your code goes here
-        users[size] = userA;
-        size++;
+        if (!searchUser(userA)) {
+            this.users[size] = userA;
+            // this.userNames[size] = userA.userName;
+            this.size++;
+            if (this.size == this.capacity) {
+                this.users = java.util.Arrays.copyOf(users, this.capacity * 2);
+                this.capacity = this.capacity * 2;
+            }
+        }
     }
 
     /**
@@ -96,8 +140,9 @@ public class SocialNetwork {
     public void addConnection(User userA, User userB) {
         // TODO
         // Your code goes here
-        userA.connections[size] = userB;
-        size++;
+        if (searchUser(userA) && searchUser(userB)) {
+            userA.addFriend(userB);
+        }
     }
 
     /**
@@ -113,9 +158,11 @@ public class SocialNetwork {
     public User[] getConnections(User userA) {
         // TODO
         // Your code goes here
-        for (int i : User) {
-            if (i == userA) {
+        if(userA != null) {
+            if(searchUser(userA)) {
                 return userA.connections;
+            } else {
+                return null;
             }
         }
         return null;
@@ -135,17 +182,23 @@ public class SocialNetwork {
     public User[] getCommonConnections(User userA, User userB) {
         // TODO
         // Your code goes here
-        int c = 0;
-        for (int i = 0; i < userA.connections.length; i++) {
-            for ( int j = 0; j < userB.connections.length; j++) {
-                if (userA.connections[i] == userB.connections[j]) 
-                    c += 1;
+        User[] commonConnections = new User[10];
+        int i = 0;
+
+        if (searchUser(userA) && searchUser(userB)) {
+            // System.out.println("Im working here -----------------------");
+            for (User user1 : userA.connections) {
+                for (User user2 : userB.connections) {
+                    if ((user1 != null && user2 != null ) && user1.getUserName().equals(user2.getUserName())) {
+                        // System.out.println(user1);
+                        commonConnections[i++] = user1;
+                    }
+                }
             }
-        }
-        if (c == 0) {
-            return null;
+            // System.out.println(commonConnections);
+            return commonConnections;
         } else {
-            return c;
+            return null;
         }
     }
 
