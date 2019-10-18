@@ -23,7 +23,7 @@ class OrderedList extends AbstractList {
 
     public void resize() {
         list = java.util.Arrays.copyOf(list, 2 * cap);
-        // capacity = capacity * 2;
+        cap = cap * 2;
     }
 
     public void insertAt(int item, int index) {
