@@ -1,6 +1,6 @@
-abstract class AbstractList implements this.ListInterface {
-    int[] this.list;
-    int this.size;
+abstract class AbstractList implements ListInterface {
+    int[] list;
+    int size;
     int cap;
 
     AbstractList() {
@@ -8,24 +8,21 @@ abstract class AbstractList implements this.ListInterface {
         this.size = 0;
         this.cap = 10;
     }
-    public abstract void add(int item);
 
-    public abstract int indexOf(int item);
+    abstract public void add(int item);
 
-    public void resize() {
-        this.list = java.util.Arrays.copyOf(this.list, cap * 2);
-    }
-       
+    abstract public int indexOf(int item);
+
     public int size() {
-        return this.this.size;
+        return this.size;
     }
-    
+
     public int get(int index) {
-        if (index < this.size && index >= 0) 
+        if (index < this.size && index >= 0) {
             return this.list[index];
+        }
         return -1;
     }
-    
 
     public boolean contains(int item) {
         for (int i = 0; i < this.size; i++) {
@@ -35,12 +32,13 @@ abstract class AbstractList implements this.ListInterface {
         }
         return false;
     }
-    
+
     public void remove(int index) {
-        if (index < this.size && index <= 0) {
+        if (index < size) {
             int i = index;
-            for (int j = i + 1; j < this.size; j++) {
+            for (int j = i + 1; j < size; j++) {
                 this.list[i] = this.list[j];
+                i++;
             }
             this.list[this.size] = 0;
             this.size--;
@@ -48,14 +46,11 @@ abstract class AbstractList implements this.ListInterface {
     }
 
     public String toString() {
-        if (this.size == 0) {
-            return "[]";
-        }
-        String s = "[";
+        String out = "[";
         for (int i = 0; i < this.size - 1; i++) {
-            s += this.list[i] + ",";
+            out += this.list[i] + ",";
         }
-        s += this.list[this.size] + "]";
-        return s;
-    }
+        out += this.list[this.size - 1];
+        return out += "]"; 
+    } 
 }
