@@ -3,32 +3,29 @@ class Show {
     String datetime;
     String[] seats;
 
-    Show(String m, String dt,String[] st) {
-        movie_name = m;
-        datetime = dt;
-        seats = st;
+    Show(String moviename, String datetime,String[] seats) {
+        this.movie_name = moviename;
+        this.datetime = datetime;
+        this.seats = seats;
     }
 
-    // public getMovie() {
-    //     return this.movie_name;
-    // }
+    public String getMovieName() {
+        return this.movie_name;
+    }
 
-    // public getDate() {
-    //     return this.date;
-    // }
+    public String getDateTime() {
+        return this.datetime;
+    }
 
-    // public getSeats() {
-    //     return this.seats;
-    // }
+    public String[] getSeats() {
+        return this.seats;
+    }
 
-    // public getSNum() {
-    //     return this.sno;
-    // }
-
-    // public printShows() {
-    //     System.out.println("Movie name: " + movie_name + 
-    //                 " \n Date: " + datetime +
-    //                 " \n Seat numbers: " + seats);
-    // }
+    public void printTickets(Patron p) {
+        System.out.println("Movie name: " + movie_name + 
+                    " \n Date: " + datetime +
+                    " \n Seat numbers: " + seats);
+        System.out.println(p);
+    }
     
 }

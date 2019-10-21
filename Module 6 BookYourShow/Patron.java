@@ -1,17 +1,19 @@
 class Patron {
     String Pname;
     String Pnumber;
+    String ticket;
 
-    Patron(String nm, String pno) {
-        Pname = nm;
-        Pnumber = pno;
+    Patron(String pname, String pnumber) {
+        Pname = pname;
+        Pnumber = pnumber;
     }
 
-    // public String getName() {
-    //     return username;
-    // }
+    public void setTicket(String t) {
+        this.ticket = t;
+    }
 
-    // public String getNumber() {
-    //     return number;
-    // }
+    public void toString() {
+        return this.ticket;
+    }
+
 }

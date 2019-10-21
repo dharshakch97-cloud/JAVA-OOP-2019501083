@@ -58,10 +58,10 @@ public class Menu {
     //  show is available based on the previous step.
     Patron p = new Patron("Praveen", "9989968765");
     String[] s = {"B1", "B2"};
-    result.bookAShow(p, s);
+    // result.bookAShow(p, s);
 
     Patron r = new Patron("Varshini", "888888888");
-    result.bookAShow(r, s);
+    // result.bookAShow(r, s);
 
     //  Print the tickets Once the tickets are booked....
     result.printTickets(p);

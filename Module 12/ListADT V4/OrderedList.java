@@ -16,32 +16,29 @@ public class OrderedList extends AbstractList {
      */
     public void add(int item) {
         //Inserts the specified element at the end of the list.
-        // TODO
-        // Your code goes here....
+        if (size == list.length) {
+            resize();
+        }
+        if (size == 0) {
+            list[size++] = item;
+        }else {
+            int index = rank(item);
+            for (int k=size; k>index; k--) {
+                list[k] = list[k-1];
+            }
+            list[index] = item;
+            size++;
+        }
     }
-    
+
     public int rank(int item) {
         int lo = 0, hi = size-1; 
         while (lo <= hi) { 
             int mid = lo + (hi - lo) / 2;
             if      (item < list[hi]) hi = mid - 1; 
-            else if (item > list[lo]) lo = mid + 1;     
+            else if (item > list[lo]) lo = mid + 1; 
             else return mid; 
         } 
         return lo;
-    } 
-
-    public static void main(String[] args) {
-        AbstractList lst = new OrderedList();
-        lst.add(1, 1);
-    }
-    
-    public int indexOf(int item) {
-        for (int i = 0; i < size; i++) {
-            if (list[i] == item) {
-                return i;
-            }
-        }
-        return -1;
     }
 }
