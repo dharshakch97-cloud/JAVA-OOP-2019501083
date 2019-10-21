@@ -16,7 +16,7 @@
 
 public class Menu {
   public static void main(String[] args) {
-
+    int checkTickets;
     //  Creating an object for BookYourShow application.
     BookYourShow book = new BookYourShow();
 
@@ -56,17 +56,23 @@ public class Menu {
 
     //  Now the Patron's are trying to book the tickets for which the
     //  show is available based on the previous step.
-    Patron p = new Patron("Praveen", "9989968765");
-    String[] s = {"B1", "B2"};
-    // result.bookAShow(p, s);
+    Patron p1 = new Patron("Dharshak", "9087654321");
+    String[] s1 = {"B1", "B2"};
+    result.bookAShow(p1, s1); // print the tickets for patron1
+    result.printTickets(p1);
+    System.out.println();
 
-    Patron r = new Patron("Varshini", "888888888");
-    // result.bookAShow(r, s);
+    System.out.println(result);
+    Patron p2 = new Patron("Sam", "8907654321");
+    String[] s2 = {"A1", "A2", "A3"};
+    result.bookAShow(p2, s2); // print the tickets for patron2
+    result.printTickets(p2);
+    System.out.println();
 
-    //  Print the tickets Once the tickets are booked....
-    result.printTickets(p);
-    result.printTickets(r);
-    
-    //book.printShows();
+    System.out.println(result);
+    Patron p3 = new Patron("Satya", "7809654321");
+    String[] s3 = {"A1", "A2", "A3"};
+    result.bookAShow(p3, s3); // print the tickets for patron3
+    result.printTickets(p3);
   }
 }

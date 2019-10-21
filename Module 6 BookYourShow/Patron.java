@@ -12,8 +12,7 @@ class Patron {
         this.ticket = t;
     }
 
-    public void toString() {
+    public String toString() {
         return this.ticket;
     }
-
 }
