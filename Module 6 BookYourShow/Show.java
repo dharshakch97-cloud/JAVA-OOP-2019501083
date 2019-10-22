@@ -49,7 +49,9 @@ class Show {
 
     public void bookAShow(Patron p, String[] bkdSeats){
         String ticket = "";
-        int c = 0;
+        if (seats.length < bkdSeats.length) {
+            System.out.println("No seats available.");
+        }
 		for (int i = 0; i < seats.length;i++){
 			for (int j = 0; j < bkdSeats.length;j++){
 				// System.out.println(seats[i]);
@@ -60,17 +62,12 @@ class Show {
                 //         seats[i] = null;
                 //     }
                 // }
-
                 if (seats[i] != null) {
                     if (seats[i].equals(bkdSeats[j])) {
                         ticket += seats[i] + " ";
                         seats[i] = null;
                     }
                 }
-                else {
-                    c += 1;
-                }
-
 				// if(seats[i] != null && seats[i].equals(bkdSeats[j])){
 				// 	ticket += seats[i] +" ";
 				// 	seats[i] = null;
@@ -78,5 +75,5 @@ class Show {
 			}
         }
         p.setTicket(ticket);
-	}
+    }
 }

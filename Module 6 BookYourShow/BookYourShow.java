@@ -20,4 +20,24 @@ class BookYourShow {
         }
         return null;
     }
+
+    public void removeAShow(String moviename) {
+        for (int i = 0; i < showsCount; i++) {
+            if (shows[i].getMovieName().equals(moviename)) {
+                for (int j = i + 1; j < showsCount; j++) {
+                    shows[i] = shows[j];
+                    i++;
+                }
+                shows[showsCount] = null;
+                showsCount--;
+                System.out.println("Show removed.");
+            }
+        }
+    }
+
+    public void displayShows() {
+        for (int i = 0; i < showsCount; i++) {
+            System.out.println(shows[i]);
+        }
+    }
 }
