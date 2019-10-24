@@ -1,0 +1,45 @@
+Project 1: Hangman
+
+
+This is your first project. You will be building a Hangman(Guessing Game) using the knowledge based on the concepts that you have learned so far.
+
+Ok, it's time to build your own project in Java, this time you'll be completing a game where the player gets 
+to guess the movie name given some of the missing letters in it.
+
+The rules are simple, the computer randomly picks a movie title, and shows you how many letters it's made up of. 
+Your goal is to try to figure out the movie by guessing one letter at a time.
+
+The user selects a level (Where the level can be ranging from 1 to 4, 1 is easy, 2 is medium, 3 is Hard 
+and 4: the computer picks a movie for you randomly (the default option), and shows you the missing letters it's made up of. 
+Example: “_ _ _ m _ _ e” Your goal is to try to figure out the movie by guessing one letter at a time.
+
+If a letter is guessed is indeed in the movie (word), the program will reveal its correct position in the movie (word), if not, you lose a point. 
+If you lose the x number of points (x will be based on the number missing letters), your game is over!
+
+Additional information to the player.
+The computer can also display the letters that have used so far.
+The computer can also display the letters that haven’t used so far.
+
+
+The score of the player is going to be the number of correct guesses. 
+If the player guesses correctly the entire movie word, then his/her score is going to be the number of characters in the movie (word). 
+The computer can award bonus points.
+
+BUT the more correct letters you guess the more obvious the movie (word) becomes and at a certain point you should be able to figure it out.
+
+The player can request the computer for the hints at any point if he/she is not able to guess the movie (word). 
+In this case, the player won’t get any bonus points.
+
+Let us assume four players are playing, make sure each player should get the turn and end up the game by displaying the player names based on their 
+scores in descending order. Pretty much similar like a Leaderboard.
+
+Everything you need to know to be able to build this game should be covered in the previous lessons, but of course that doesn't mean it has to be easy! 
+It's ok to get stuck and it's absolutely normal for things to not work from the first time.
+
+Just take it step by step, build a small part of the game first, test it and make sure it works and then continue to add more to it.
+
+Aaaand, whenever you reach a roadblock, head to the mentor straight away,
+
+Download the word list from here, and start coding. Good luck :)
+
+Note: Project Idea and content picked from Udacity. Edited by Mr. Manjunath and Mr Siva Sankar.

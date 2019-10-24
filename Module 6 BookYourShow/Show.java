@@ -40,11 +40,6 @@ class Show {
         else {
             System.out.println("Booking failed!");
         }
-        // System.out.println("Movie name: " + movie_name + 
-        //             " \n Date: " + datetime);
-        // System.out.println("Patron name: " + p.Pname + 
-        //             " \n Patron mobile no. : " + p.Pnumber +
-        //             " \n Seat numbers: " + p.ticket);
     }
 
     public void bookAShow(Patron p, String[] bkdSeats){
@@ -54,24 +49,12 @@ class Show {
         }
 		for (int i = 0; i < seats.length;i++){
 			for (int j = 0; j < bkdSeats.length;j++){
-				// System.out.println(seats[i]);
-
-                // if (bkdSeats.length < seats.length) {
-                //     if (seats[i] != null) {
-                //         ticket += seats[i] + " ";
-                //         seats[i] = null;
-                //     }
-                // }
                 if (seats[i] != null) {
                     if (seats[i].equals(bkdSeats[j])) {
                         ticket += seats[i] + " ";
                         seats[i] = null;
                     }
                 }
-				// if(seats[i] != null && seats[i].equals(bkdSeats[j])){
-				// 	ticket += seats[i] +" ";
-				// 	seats[i] = null;
-                // }
 			}
         }
         p.setTicket(ticket);
