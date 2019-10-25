@@ -1,7 +1,7 @@
 class Patron {
-    String Pname;
-    String Pnumber;
-    String ticket;
+    private String Pname;
+    private String Pnumber;
+    private String ticket;
 
     Patron(String pname, String pnumber) {
         Pname = pname;

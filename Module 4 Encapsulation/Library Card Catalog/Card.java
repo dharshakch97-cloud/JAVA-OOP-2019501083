@@ -1,7 +1,7 @@
 class Card {
-    String title;
-    String author;
-    String subject;
+    private String title;
+    private String author;
+    private String subject;
 
     public Card() {
     }    

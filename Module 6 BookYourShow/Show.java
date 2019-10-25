@@ -1,7 +1,7 @@
 class Show {
-    String movie_name;
-    String datetime;
-    String[] seats;
+    private String movie_name;
+    private String datetime;
+    private String[] seats;
 
     Show(String moviename, String datetime,String[] seats) {
         this.movie_name = moviename;

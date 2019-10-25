@@ -51,7 +51,6 @@ class MovieList {
         }
     }
     
-
     public Movie[] getMovies(String level) {
         if (easyMovies != null && level.equals("easy")) {
             return easyMovies;
