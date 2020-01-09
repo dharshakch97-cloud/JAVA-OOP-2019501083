@@ -1,9 +1,9 @@
 class Movie {
 
-    private String movie_name;
-    private String level;
-    private String hint1;
-    private String hint2;
+    String movie_name;
+    String level;
+    String hint1;
+    String hint2;
 
     Movie() {
 
@@ -17,10 +17,10 @@ class Movie {
     }
 
     public String toString() {
-        return "Movie name: " + this.movie_name +
-            "\n Level: " + this.level +
-            "\n Hint 1 " + this.hint1 +
-            "\n Hint 2 " + this.hint2;
+        return "Movie name: " + movie_name +
+            "\n Level: " + level +
+            "\n Hint 1 " + hint1 +
+            "\n Hint 2 " + hint2;
     }
     
     public String getMovieName() {
@@ -39,19 +39,19 @@ class Movie {
         this.level = level;
     }
 
-    public String getHint1() {
+    public String getH1() {
         return this.hint1;
     }
 
-    public void setHint1(String h1) {
+    public void setH1(String h1) {
         this.hint1 = h1;
     }
 
-    public String getHint2() {
+    public String getH2() {
         return this.hint2;
     }
 
-    public void setHint2(String h2) {
+    public void setH2(String h2) {
         this.hint2 = h2;
     }
 }

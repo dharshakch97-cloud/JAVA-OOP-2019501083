@@ -1,21 +1,17 @@
 class Player {
-    private String player1;
-    private String level;
-    private int score;
+    String Pname;
+    int score;
 
     Player() {
-
     }
 
-    Player(String p) {
+    Player(String p, int s) {
         this.player1 = p;
-        this.score = 0;
-        this.level = "";
+        this.score = s;
     }
 
     public String toString() {
         return "Player name: " + this.player1 + 
-                "\n Player level: " + this.level +
                 "\n Player score: " + this.score;
     }
 
@@ -33,13 +29,5 @@ class Player {
 
     public void setScore(int s) {
         this.score = s;
-    }
-
-    public String getLevel() {
-        return this.level;
-    }
-
-    public void setLevel(String l) {
-        this.level = l;
     }
 }
